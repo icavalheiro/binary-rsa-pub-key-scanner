@@ -10,8 +10,14 @@ namespace dotnet
     {
         static void Main(string[] args)
         {
+            if (args.Length == 0)
+            {
+                Console.WriteLine("you must specify the path to the binary file");
+                return;
+            }
+
             var strings = new List<string>();
-            var path = "/path/to/binary.exe";
+            var path = args[0];
             var validChars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
             var currentStringBuilder = new StringBuilder();
             using (var file = File.OpenRead(path))
